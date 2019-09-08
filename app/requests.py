@@ -38,7 +38,7 @@ def get_news():
     return news_results
 
 
-    def process_results(news_list):
+def process_results(news_list):
 
     news_results = []
     for news_item in news_list:
