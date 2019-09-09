@@ -1,11 +1,13 @@
-frrom app import create_app
+ 
+from app import create_app
 from flask_script import Manager, Server
- #creating app instance
- app = create_app('development')
 
- Manager = Manager(app)
+# Creating app instance
+app = create_app('development')
 
- Manager.add_commnad('server', Server)
+manager = Manager(app)
 
- if __name__ == '__main__' :
-     manager.run()
+manager.add_command('server', Server)
+
+if __name__ == '__main__' :
+    manager.run()
