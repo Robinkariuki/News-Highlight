@@ -1,4 +1,11 @@
-{% extends 'base.html' %}
-    {% block content %}
-    <h1>Sorry, can't find the page you are looking for</h1>
-    {% endblock %}
+{% extends 'base.html'%}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/errors.css')}}">
+{% endblock %}
+
+
+{% block content %}
+   <h1>The specified page cannot be found</h1>
+{% endblock %}

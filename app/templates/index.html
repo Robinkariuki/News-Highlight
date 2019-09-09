@@ -1,20 +1,16 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro %}
-
-<!-- Styles block -->
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
 
 {% block styles%}
-
-<link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="shortcut icon" href="https://icon2.kisspng.com/20180320/ttw/kisspng-free-newspaper-computer-icons-online-newspaper-goo-news-png-vector-5ab0db736c6dc7.2048426515215399554442.jpg">
 {% endblock %}
 
-<!-- Content block -->
+{%block content%}
+  <div class="jumbotron">
+    <h1 class="text-center">News Sources</h1>
+  </div>
 
-    {% block content %}
-
-        <ul>
-            {{ macro.displaySourceList(sources) }}
-        </ul>
-            
-
-    {% endblock%}
+  {{macro.displaySourcesList(sources)}}
+{%endblock%}
