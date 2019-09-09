@@ -1,17 +1,37 @@
- <!-- displaying news source list macro -->
- {% macro displaySourceList(news_list) %}
+{% macro displaySourcesList(source_list) %}
+  {% for source in source_list %}
+    <div class="container col-xs-12 col-sm-4 col-md-3 col-lg-3">
+      <div class="panel ">
+        <div class="panel-heading">
+          <a href="/articles/{{source.id}}" id="header">{{source.name}}</a>
+        </div>
+        <div class="panel-body">
+          <p class="card-text">{{source.description}}</p>
+        </div>
 
- {% for source in news_list %}
-
- <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card">
-     <li class="text-center">
-         <a href="/articles/{{source.id}}" id="header"></a> <p>{{source.name}}</p>
-         <p>{{source.description}}</p>
-     </li>
-
-     <div class="text-center">
-        <a href="{{source.url}}" class="btn btn-sm btn-danger">Click</a>
+        <div class="text-center">
+          <a href="{{source.url}}" class="btn btn-sm btn-danger">Visit Website</a>
+        </div>
+        </div>
     </div>
- </div>
- {% endfor %}
+  {% endfor %}
 {% endmacro %}
+
+
+{% macro displayArticlesList(article_list)%}
+  {% for article in article_list%}
+
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+      <img src="{{article.urlToImage}}" alt="{{article.title}} image" class="img-responsive">
+      <div class="panel">
+        <div class="panel-body">
+        <h2>{{article.title | truncate(60)}}</h2>
+        <p>{{article.description| truncate(150)}}</p>
+        <a href="{{article.url}}">Read Story</a>
+        <p>Published at: {{article.publishedAt}}</p>
+        </div>
+      </div>
+    </div>
+
+  {%endfor%}
+{%endmacro%}
